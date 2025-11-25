@@ -11,20 +11,18 @@
  */
 
 function deleteDuplicates(head: ListNode | null): ListNode | null {
-    let sentinal = new ListNode();
-    sentinal.next = head
-    let curr = sentinal.next;
+    if (!head) return head;
 
-    if(!head) return head;
-    
-    while(curr && curr.next){
-        if(curr.next.val === curr.val){
-            curr.next = curr.next.next
-        }
-        else{
+    let curr = head;
+
+    while (curr && curr.next) {
+        if (curr.val === curr.next.val) {
+            // remove duplicate
+            curr.next = curr.next.next;
+        } else {
             curr = curr.next;
         }
     }
 
-    return sentinal.next;
+    return head;
 };
