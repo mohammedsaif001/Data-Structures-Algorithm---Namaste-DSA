@@ -18,7 +18,7 @@ function swapPairs(head: ListNode | null): ListNode | null {
     let curr = sentinal.next;
     let next = curr.next;
 
-    while (curr && curr.next) {
+    while (curr && next) {
         // Swapping The Nodes
         prev.next = next;
         prev = curr;
