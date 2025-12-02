@@ -1,47 +1,33 @@
-// function nextGreaterElements(nums: number[]): number[] {
-//     // 1st Approach by doubling the array
-
-//     let arr = new Array(nums.length*2).fill(-1)
-//     let doubledArray = [...nums,...nums];
-//     let stack = [];
-    
-//     for(let i=doubledArray.length-1;i>=0;i--){
-//         while(stack.length){
-//             let top = stack[stack.length-1]
-//             if(top<=doubledArray[i]){
-//                 stack.pop();
-//             }else{
-//                 arr[i] = top
-//                 break;
-//             }
-//         }
-
-//         stack.push(doubledArray[i])
-//     }
-
-//     return arr.slice(0,nums.length)
-// };
-
 function nextGreaterElements(nums: number[]): number[] {
-    // 2nd Approach by doubling only the indexes
+    // Approach 2: Do NOT physically duplicate array.
+    // Instead, loop index from (2*n - 1) down to 0.
+    // Use modulo (i % n) to simulate circular access.
+    // Saves memory and is more optimal.
 
-    let n = nums.length
-    let arr = new Array(n).fill(-1)
-    let stack = [];
-    
-    for(let i=(2*n)-1;i>=0;i--){
-        while(stack.length){
-            let top = stack[stack.length-1]
-            if(top<=nums[i%n]){
+    let n = nums.length;
+    let arr = new Array(n).fill(-1);  // Final answer
+    let stack: number[] = [];          // Monotonic decreasing stack
+
+    // Loop from 2n-1 down to 0 to cover circular array twice
+    for (let i = (2 * n) - 1; i >= 0; i--) {
+        let idx = i % n;               // Circular index in nums[]
+
+        // Remove all elements <= current because they can't be NGE
+        while (stack.length) {
+            let top = stack[stack.length - 1];
+
+            if (top <= nums[idx]) {
                 stack.pop();
-            }else{
-                arr[i%n] = top
+            } else {
+                // First greater element to the right in circular array
+                arr[idx] = top;
                 break;
             }
         }
 
-        stack.push(nums[i%n])
+        // Push current element for future next-greater checks
+        stack.push(nums[idx]);
     }
 
-    return arr
-};
+    return arr;
+}
