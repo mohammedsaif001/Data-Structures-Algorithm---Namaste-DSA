@@ -13,15 +13,10 @@ function guessNumber(n: number): number {
     let right = n;
 
     while(left<=right){
-        let middle = Math.floor(left + (right-left)/2);
-        let guessedNum = guess(middle)
-        if(guessedNum === 0){
-            return middle;
-        }
-        else if(guessedNum === -1){
-            right = middle - 1
-        }else{
-            left = middle + 1
-        }
+        let mid = left + Math.floor((right-left)/2);
+        let guessedNum = guess(mid)
+        if(guessedNum === 0) return mid
+        if(guessedNum === -1) right = mid - 1;
+        else left = mid + 1
     }
 };
