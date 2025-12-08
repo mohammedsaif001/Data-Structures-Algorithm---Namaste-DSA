@@ -5,22 +5,22 @@ function searchRange(arr: number[], target: number): number[] {
 
     while (left < right) {
         let mid = left + Math.floor((right - left) / 2);
-        if (arr[mid] < target) left = mid + 1;
-        else right = mid
+        if (target > arr[mid]) left = mid + 1;
+        else right = mid;
     }
 
-    if (arr[right] === target) ans[0] = right;
+    if (arr[left] === target) ans[0] = left;
 
     left = 0;
-    right = arr.length - 1;
+    right =  arr.length - 1;
 
     while (left < right) {
         let mid = left + Math.ceil((right - left) / 2);
-        if (arr[mid] <= target) left = mid;
+        if (target >= arr[mid]) left = mid;
         else right = mid - 1
     }
 
-    if (arr[left] === target) ans[1] = left;
+     if (arr[left] === target) ans[1] = left;
 
-    return ans
+     return ans
 };
