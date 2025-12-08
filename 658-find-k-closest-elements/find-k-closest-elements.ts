@@ -1,15 +1,16 @@
 function findClosestElements(arr: number[], k: number, x: number): number[] {
-    let left = 0;
-    let right = arr.length - k ;
+    let l = 0;
+    let r = arr.length - 1;
 
-    while (left < right) {
-        let mid = left + Math.floor((right - left) / 2);
-
-        if ((arr[mid + k] - x) < (x - arr[mid])) left = mid + 1;
-        else right = mid
-
-
+    while (l < r) {
+        let m = l + Math.floor((r - l) / 2)
+        if ((arr[m + k] - x) < (x - arr[m])){
+            l = m + 1;
+        }
+        else{
+            r = m
+        }
     }
 
-    return arr.slice(left, left + k)
+    return arr.slice(l, l + k)
 };
