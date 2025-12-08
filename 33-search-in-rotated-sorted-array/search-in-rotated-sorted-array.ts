@@ -7,7 +7,7 @@ function search(arr: number[], target: number): number {
 
         if (arr[mid] === target) return mid;
 
-        if (arr[mid] < arr[right]) {
+        if (arr[mid] <= arr[right]) {
             if (arr[mid] < target && target <= arr[right]) {
                 left = mid + 1;
             } else {
