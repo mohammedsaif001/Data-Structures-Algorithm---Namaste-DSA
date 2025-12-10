@@ -1,19 +1,16 @@
 function maxFreqSum(s: string): number {
-    let vowels = new Set(['a','e','i','o','u'])
-    let vowelSet = {};
-    let consonantSet = {};
+    let vowelSet: Record<string, number> = {};
+    let consonentSet: Record<string, number> = {};
+
+    const vowels = ['a', 'e', 'i', 'o', 'u']
 
     for (let i = 0; i < s.length; i++) {
-        if (vowels.has(s[i])) {
-            vowelSet[s[i]] = (vowelSet[s[i]] || 0) + 1
-        }
-        else {
-            consonantSet[s[i]] = (consonantSet[s[i]] || 0) + 1
+        if (vowels.includes(s[i])) {
+            vowelSet[s[i]] = (vowelSet[s[i]] || 0) + 1;
+        }else{
+            consonentSet[s[i]] = (consonentSet[s[i]] || 0) + 1;
         }
     }
 
-    let maxVowelCount = Math.max(...Object.values(vowelSet)  as number[],0);
-    let maxConsonantCount = Math.max(...Object.values(consonantSet)  as number[],0)
-
-    return maxVowelCount + maxConsonantCount
-};
+    return Math.max(...Object.values(vowelSet),0) + Math.max(...Object.values(consonentSet),0)
+}
