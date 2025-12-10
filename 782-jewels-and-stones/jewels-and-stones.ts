@@ -1,15 +1,15 @@
 function numJewelsInStones(jewels: string, stones: string): number {
-    let jewelSet = new Set();
+    let set = new Set();
     let count = 0;
-     
-    //  Creating a set
-     for(let i=0;i<jewels.length;i++){
-        jewelSet.add(jewels[i])
-     }
 
-     for(let i=0;i<stones.length;i++){
-        if(jewelSet.has(stones[i])) ++count
-     }
+    for (let i = 0; i < jewels.length; i++) {
+        set.add(jewels[i])
+    }
 
-     return count
+    for (let i = 0; i < stones.length; i++) {
+        if (set.has(stones[i])) ++count;
+    }
+
+
+    return count;
 };
