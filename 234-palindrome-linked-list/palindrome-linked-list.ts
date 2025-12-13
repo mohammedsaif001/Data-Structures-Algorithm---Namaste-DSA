@@ -11,42 +11,39 @@
  */
 
 function isPalindrome(head: ListNode | null): boolean {
-    // TODO:
-    // 1. Find the middle Node
-    // 2. Reverse the Second half of the linked list
-    // 3. Compare the firt half and second half nodes if they are equal
+    // 1. Find Middle Node & Divide the first and second half
+    // 2. Reverse the second half of the LL
+    // 3. Compare Each Element
 
-
-    // 1. Find the middle Node
     let slow = head;
     let fast = head;
-    while (fast && fast.next) {
-        slow = slow.next
-        fast = fast.next.next;
+    while (fast?.next) {
+        slow = slow.next;
+        fast = fast.next.next
     }
-    let middle = slow;
+    let middle = slow
 
-    // 2. Reverse the Second half of the linked list
     let prev = null;
     let curr = middle;
-    while(curr){
+
+    while (curr) {
         let temp = curr.next;
         curr.next = prev;
         prev = curr;
-        curr = temp;
+        curr = temp
     }
 
-    // 3. Compare the firt half and second half nodes if they are equal
     let firstHalf = head;
-    let secondHalf = prev;
-
-    while(secondHalf){
-        if(firstHalf.val !== secondHalf.val) return false;
-        firstHalf = firstHalf.next;
-        secondHalf = secondHalf.next
-    } 
+    let secondHalfReverse = prev;
+    while (secondHalfReverse) {
+        if (secondHalfReverse.val === firstHalf.val) {
+            secondHalfReverse = secondHalfReverse.next;
+            firstHalf = firstHalf.next
+        }
+        else {
+            return false
+        }
+    }
 
     return true
-
-
 };
