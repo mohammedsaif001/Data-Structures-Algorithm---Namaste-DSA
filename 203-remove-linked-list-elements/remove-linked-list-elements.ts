@@ -11,24 +11,21 @@
  */
 
 function removeElements(head: ListNode | null, val: number): ListNode | null {
-    // 1. Create a sentinal Node
-    // 2. Point Sentinal.next = head;
-    // 3. Traverse From sentinal.next and check if the next val is equal to the given value
-    // 4. If yes then remove theat element
+    // Create  a sentinal node 
+    // Check the next element is val if yes then skip the next node
 
     let sentinal = new ListNode();
     sentinal.next = head;
-    let curr = sentinal;
 
-    while(curr && curr.next){
-        if(curr.next.val === val){
-        curr.next = curr.next.next
+    let curr = sentinal
+
+    while (curr?.next) {
+        if (curr.next.val === val) {
+            curr.next = curr.next.next
+        } else {
+            curr = curr.next;
         }
-        else{
-            curr = curr.next
-        }
-    } 
+    }
 
-    return sentinal.next;
-
+    return sentinal.next
 };
