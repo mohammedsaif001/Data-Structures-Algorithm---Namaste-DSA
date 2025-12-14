@@ -53,7 +53,7 @@ function swapPairs(head: ListNode | null): ListNode | null {
     3. Right will point to left
     4. Left Will point to rest nodes (Internally Taken as swapped)
      */
-    if (!head || !head.next) return head;
+    if(!head || !head.next) return head;
 
     let left = head;
     let right = head.next;
@@ -61,5 +61,5 @@ function swapPairs(head: ListNode | null): ListNode | null {
     left.next = swapPairs(right.next);
     right.next = left;
 
-    return right;
+    return right
 };
