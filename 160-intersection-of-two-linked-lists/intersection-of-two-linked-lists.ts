@@ -11,19 +11,22 @@
  */
 
 function getIntersectionNode(headA: ListNode | null, headB: ListNode | null): ListNode | null {
-    let seenNodes = new Set();
+    // 1. Add all elements of LL1 into set
+    // 2. heck if the elemnt of LL2 is present if yes then return
+    // Else return empty
+
+
+    let set = new Set()
     let curr1 = headA;
     let curr2 = headB;
 
-// Add All Elements of Linked List 1 in Set
-    while(curr1){
-        seenNodes.add(curr1);
-        curr1 = curr1.next;
+    while (curr1) {
+        set.add(curr1)
+        curr1 = curr1.next
     }
 
-    // Traverse through each element of List 2 in set and check if its present
-    while(curr2){
-        if(seenNodes.has(curr2)) return curr2;
+    while (curr2) {
+        if(set.has(curr2)) return curr2
         curr2 = curr2.next
     }
 
