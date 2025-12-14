@@ -22,8 +22,9 @@ function mergeTwoLists(l1: ListNode | null, l2: ListNode | null): ListNode | nul
     8. Lets say if l1 has lesser nodes than l2 then after all the iteration point the last node of curr.next to the remaining of l2 as its already sorted & vice-versa
     9. Now Return the sentinal.next 
     */
+
     let sentinal = new ListNode();
-    let curr = sentinal
+    let curr = sentinal;
 
     while (l1 && l2) {
         if (l1.val < l2.val) {
@@ -35,8 +36,8 @@ function mergeTwoLists(l1: ListNode | null, l2: ListNode | null): ListNode | nul
         }
         curr = curr.next
     }
-    if (!l1) curr.next = l2
-    if (!l2) curr.next = l1
+    if(!l1) curr.next = l2;
+    if(!l2) curr.next = l1;
 
-    return sentinal.next;
+    return sentinal.next
 };
