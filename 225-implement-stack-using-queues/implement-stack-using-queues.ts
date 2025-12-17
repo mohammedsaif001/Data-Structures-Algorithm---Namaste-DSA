@@ -1,34 +1,39 @@
 class MyStack {
-    q:number[]
+    queue: number[]
     constructor() {
-        this.q = []
+        this.queue = [];
     }
 
     push(x: number): void {
-        this.q.push(x)
+        this.queue.push(x)
     }
 
     pop(): number {
-        // Remove elements from top till 2nd last then add to the same queue now the first element will be my poppped element
-        for(let i=0;i<this.q.length - 1;i++){
-            this.q.push(this.q.shift())
+        if (this.queue.length <= 0) return -1;
+
+        for (let i = 0; i < this.queue.length - 1; i++) {
+            this.queue.push(this.queue.shift())
         }
 
-        return this.q.shift()
+        return this.queue.shift();
+
     }
 
     top(): number {
-         for(let i=0;i<this.q.length - 1;i++){
-            this.q.push(this.q.shift())
+         if (this.queue.length <= 0) return -1;
+
+        for (let i = 0; i < this.queue.length - 1; i++) {
+            this.queue.push(this.queue.shift())
         }
-        let top = this.q.shift();
-        this.q.push(top)
+
+        let top = this.queue.shift()
+        this.queue.push(top)
 
         return top
     }
 
     empty(): boolean {
-        return !this.q.length
+        return !this.queue.length 
     }
 }
 
