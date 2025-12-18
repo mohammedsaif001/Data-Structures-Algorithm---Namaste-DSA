@@ -9,26 +9,38 @@
  *     }
  * }
  */
-
 function getIntersectionNode(headA: ListNode | null, headB: ListNode | null): ListNode | null {
-    // 1. Add all elements of LL1 into set
-    // 2. heck if the elemnt of LL2 is present if yes then return
-    // Else return empty
+    let pA = headA;
+    let pB = headB;
 
-
-    let set = new Set()
-    let curr1 = headA;
-    let curr2 = headB;
-
-    while (curr1) {
-        set.add(curr1)
-        curr1 = curr1.next
+    while(pA!=pB){
+        pA = pA ? pA?.next : headB;
+        pB = pB ? pB?.next : headA
+      
     }
 
-    while (curr2) {
-        if(set.has(curr2)) return curr2
-        curr2 = curr2.next
-    }
-
-    return null
+    return pA;
 };
+
+// function getIntersectionNode(headA: ListNode | null, headB: ListNode | null): ListNode | null {
+//     // 1. Add all elements of LL1 into set
+//     // 2. heck if the elemnt of LL2 is present if yes then return
+//     // Else return empty
+
+
+//     let set = new Set()
+//     let curr1 = headA;
+//     let curr2 = headB;
+
+//     while (curr1) {
+//         set.add(curr1)
+//         curr1 = curr1.next
+//     }
+
+//     while (curr2) {
+//         if(set.has(curr2)) return curr2
+//         curr2 = curr2.next
+//     }
+
+//     return null
+// };
